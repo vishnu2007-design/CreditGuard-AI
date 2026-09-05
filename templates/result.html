@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CreditGuard AI | Prediction Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="logo">
+            CreditGuard <span>AI</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/prediction">Prediction</a>
+            <a href="/about">About Model</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Result Section -->
+    <main class="result-page">
+
+        <div class="result-card">
+
+            <div class="result-icon">
+                {% if prediction == "Low Default Risk" %}
+                ✓
+                {% elif prediction == "High Default Risk" %}
+                !
+                {% else %}
+                ×
+                {% endif %}
+            </div>
+
+
+            <div class="badge">
+                AI Prediction Result
+            </div>
+
+
+            <h1>
+                {{ prediction }}
+            </h1>
+
+
+            <p class="result-message">
+                {{ message }}
+            </p>
+
+
+            {% if prediction == "Low Default Risk" %}
+
+            <div class="result-description">
+                <p>
+                    Based on the information provided, the trained
+                    Decision Tree model predicts that this customer
+                    has a lower likelihood of credit card default.
+                </p>
+            </div>
+
+            {% elif prediction == "High Default Risk" %}
+
+            <div class="result-description">
+                <p>
+                    Based on the information provided, the trained
+                    Decision Tree model predicts a higher likelihood
+                    of credit card default.
+                </p>
+            </div>
+
+            {% else %}
+
+            <div class="result-description">
+                <p>
+                    Please check the entered information and try again.
+                </p>
+            </div>
+
+            {% endif %}
+
+
+            <!-- Actions -->
+            <div class="result-actions">
+
+                <a href="/prediction" class="btn primary-btn">
+                    Try Another Prediction
+                </a>
+
+                <a href="/" class="btn secondary-btn">
+                    Back to Home
+                </a>
+
+            </div>
+
+
+            <!-- Model Information -->
+            <div class="result-info">
+
+                <div>
+                    <span>Model</span>
+                    <strong>Decision Tree</strong>
+                </div>
+
+                <div>
+                    <span>Features</span>
+                    <strong>26</strong>
+                </div>
+
+                <div>
+                    <span>Test Accuracy</span>
+                    <strong>82.1%</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="logo">
+            CreditGuard <span>AI</span>
+        </div>
+
+        <p>
+            Credit Card Default Prediction using Machine Learning
+        </p>
+
+        <p class="copyright">
+            © 2026 CreditGuard AI
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

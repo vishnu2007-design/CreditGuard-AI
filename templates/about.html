@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Model | CreditGuard AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="logo">
+            CreditGuard <span>AI</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/prediction">Prediction</a>
+            <a href="/about" class="active">About Model</a>
+        </div>
+
+    </nav>
+
+
+    <!-- About Hero -->
+    <section class="about-hero">
+
+        <div class="about-badge">
+            🤖 MACHINE LEARNING MODEL
+        </div>
+
+        <h1>
+            About <span>CreditGuard AI</span>
+        </h1>
+
+        <p>
+            Learn how our machine learning model analyzes customer
+            financial and repayment information to predict credit
+            card default risk.
+        </p>
+
+    </section>
+
+
+    <!-- Model Overview -->
+    <section class="about-section">
+
+        <div class="about-card model-overview">
+
+            <div class="about-icon">
+                🌳
+            </div>
+
+            <div>
+                <h2>Decision Tree Classifier</h2>
+
+                <p>
+                    CreditGuard AI uses a trained Decision Tree Classifier
+                    to analyze customer information and predict whether
+                    a customer is likely to default on their credit card
+                    payment.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Model Statistics -->
+        <div class="about-stats">
+
+            <div class="about-stat-card">
+                <span>Dataset</span>
+                <strong>30,000</strong>
+                <small>Customer Records</small>
+            </div>
+
+            <div class="about-stat-card">
+                <span>Features</span>
+                <strong>26</strong>
+                <small>Model Features</small>
+            </div>
+
+            <div class="about-stat-card">
+                <span>Accuracy</span>
+                <strong>82.1%</strong>
+                <small>Test Accuracy</small>
+            </div>
+
+            <div class="about-stat-card">
+                <span>Validation</span>
+                <strong>5-Fold</strong>
+                <small>Cross Validation</small>
+            </div>
+
+        </div>
+
+
+        <!-- How Model Works -->
+        <div class="about-title">
+
+            <span>HOW IT WORKS</span>
+
+            <h2>From Customer Data to Prediction</h2>
+
+            <p>
+                The model follows a simple machine learning workflow.
+            </p>
+
+        </div>
+
+
+        <div class="about-process">
+
+            <div class="process-card">
+
+                <div class="process-number">01</div>
+
+                <h3>Customer Data</h3>
+
+                <p>
+                    Financial, billing, payment and repayment information
+                    is provided to the system.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">02</div>
+
+                <h3>Feature Analysis</h3>
+
+                <p>
+                    The model analyzes the 26 features and identifies
+                    patterns related to payment default.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">03</div>
+
+                <h3>Risk Prediction</h3>
+
+                <p>
+                    The Decision Tree produces a prediction indicating
+                    whether default risk is high or low.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Model Details -->
+        <div class="model-details">
+
+            <div class="details-content">
+
+                <span>MODEL DETAILS</span>
+
+                <h2>Built and Tuned for Prediction</h2>
+
+                <p>
+                    The Decision Tree model was trained using customer
+                    credit information and optimized using
+                    GridSearchCV with 5-fold cross validation.
+                </p>
+
+            </div>
+
+
+            <div class="details-list">
+
+                <div>
+                    <span>Algorithm</span>
+                    <strong>Decision Tree Classifier</strong>
+                </div>
+
+                <div>
+                    <span>Cross Validation</span>
+                    <strong>5-Fold</strong>
+                </div>
+
+                <div>
+                    <span>Maximum Depth</span>
+                    <strong>5</strong>
+                </div>
+
+                <div>
+                    <span>Minimum Split</span>
+                    <strong>50</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CTA -->
+        <div class="about-cta">
+
+            <h2>Ready to Analyze Credit Risk?</h2>
+
+            <p>
+                Enter customer information and let CreditGuard AI
+                generate a default risk prediction.
+            </p>
+
+            <a href="/prediction" class="btn primary-btn">
+                Start Prediction →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="logo">
+            CreditGuard <span>AI</span>
+        </div>
+
+        <p>
+            Credit Card Default Prediction using Machine Learning
+        </p>
+
+        <p class="copyright">
+            © 2026 CreditGuard AI
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

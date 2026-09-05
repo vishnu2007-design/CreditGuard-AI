@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CreditGuard AI | Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="logo">
+            CreditGuard <span>AI</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/prediction" class="active">Prediction</a>
+            <a href="/about">About Model</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Prediction Section -->
+    <main class="prediction-page">
+
+        <div class="prediction-header">
+
+            <div class="badge">
+                🤖 AI Credit Risk Assessment
+            </div>
+
+            <h1>
+                Credit Default
+                <span>Prediction</span>
+            </h1>
+
+            <p>
+                Enter the customer's financial and repayment information
+                to estimate their credit default risk.
+            </p>
+
+        </div>
+
+
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+
+            <div class="progress-step active">
+                <div class="progress-number">1</div>
+                <span>Customer</span>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <div class="progress-number">2</div>
+                <span>Repayment</span>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <div class="progress-number">3</div>
+                <span>Billing</span>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <div class="progress-number">4</div>
+                <span>Payment</span>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <div class="progress-number">5</div>
+                <span>Review</span>
+            </div>
+
+        </div>
+
+
+        <!-- Form -->
+        <form action="/predict" method="POST" id="predictionForm">
+
+
+            <!-- ============================= -->
+            <!-- STEP 1 -->
+            <!-- ============================= -->
+
+            <section class="form-step active">
+
+                <div class="form-card">
+
+                    <div class="form-title">
+                        <span class="form-icon">👤</span>
+
+                        <div>
+                            <h2>Customer Information</h2>
+                            <p>Enter basic customer details.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+
+                            <label for="LIMIT_BAL">
+                                Credit Limit
+                            </label>
+
+                            <input type="number" id="LIMIT_BAL" name="LIMIT_BAL" placeholder="Example: 50000" min="0"
+                                required>
+
+                            <small>
+                                Customer's credit limit.
+                            </small>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="SEX">
+                                Sex
+                            </label>
+
+                            <select id="SEX" name="SEX" required>
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option value="1">
+                                    Male
+                                </option>
+
+                                <option value="2">
+                                    Female
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="EDUCATION">
+                                Education
+                            </label>
+
+                            <select id="EDUCATION" name="EDUCATION" required>
+
+                                <option value="">
+                                    Select education
+                                </option>
+
+                                <option value="1">
+                                    Graduate School
+                                </option>
+
+                                <option value="2">
+                                    University
+                                </option>
+
+                                <option value="3">
+                                    High School
+                                </option>
+
+                                <option value="4">
+                                    Others
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="MARRIAGE">
+                                Marriage
+                            </label>
+
+                            <select id="MARRIAGE" name="MARRIAGE" required>
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option value="1">
+                                    Married
+                                </option>
+
+                                <option value="2">
+                                    Single
+                                </option>
+
+                                <option value="3">
+                                    Others
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="AGE">
+                                Age
+                            </label>
+
+                            <input type="number" id="AGE" name="AGE" placeholder="Example: 30" min="18" max="100"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-navigation">
+
+                        <a href="/" class="btn secondary-btn">
+                            ← Home
+                        </a>
+
+                        <button type="button" class="btn primary-btn next-btn">
+                            Next →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- STEP 2 -->
+            <!-- ============================= -->
+
+            <section class="form-step">
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <span class="form-icon">📈</span>
+
+                        <div>
+                            <h2>Repayment History</h2>
+
+                            <p>
+                                Enter repayment status for the previous
+                                six months.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+                            <label for="PAY_0">
+                                PAY_0
+                            </label>
+
+                            <input type="number" id="PAY_0" name="PAY_0" placeholder="Example: 0" required>
+
+                            <small>
+                                Most recent repayment status.
+                            </small>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_2">
+                                PAY_2
+                            </label>
+
+                            <input type="number" id="PAY_2" name="PAY_2" placeholder="Example: 0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_3">
+                                PAY_3
+                            </label>
+
+                            <input type="number" id="PAY_3" name="PAY_3" placeholder="Example: 0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_4">
+                                PAY_4
+                            </label>
+
+                            <input type="number" id="PAY_4" name="PAY_4" placeholder="Example: 0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_5">
+                                PAY_5
+                            </label>
+
+                            <input type="number" id="PAY_5" name="PAY_5" placeholder="Example: 0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_6">
+                                PAY_6
+                            </label>
+
+                            <input type="number" id="PAY_6" name="PAY_6" placeholder="Example: 0" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-navigation">
+
+                        <button type="button" class="btn secondary-btn prev-btn">
+                            ← Back
+                        </button>
+
+                        <button type="button" class="btn primary-btn next-btn">
+                            Next →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- STEP 3 -->
+            <!-- ============================= -->
+
+            <section class="form-step">
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <span class="form-icon">💳</span>
+
+                        <div>
+                            <h2>Billing Information</h2>
+
+                            <p>
+                                Enter the customer's billing amounts.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+                            <label for="BILL_AMT1">BILL_AMT1</label>
+
+                            <input type="number" step="any" id="BILL_AMT1" name="BILL_AMT1" placeholder="Enter amount"
+                                required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="BILL_AMT2">BILL_AMT2</label>
+
+                            <input type="number" step="any" id="BILL_AMT2" name="BILL_AMT2" placeholder="Enter amount"
+                                required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="BILL_AMT3">BILL_AMT3</label>
+
+                            <input type="number" step="any" id="BILL_AMT3" name="BILL_AMT3" placeholder="Enter amount"
+                                required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="BILL_AMT4">BILL_AMT4</label>
+
+                            <input type="number" step="any" id="BILL_AMT4" name="BILL_AMT4" placeholder="Enter amount"
+                                required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="BILL_AMT5">BILL_AMT5</label>
+
+                            <input type="number" step="any" id="BILL_AMT5" name="BILL_AMT5" placeholder="Enter amount"
+                                required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="BILL_AMT6">BILL_AMT6</label>
+
+                            <input type="number" step="any" id="BILL_AMT6" name="BILL_AMT6" placeholder="Enter amount"
+                                required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-navigation">
+
+                        <button type="button" class="btn secondary-btn prev-btn">
+                            ← Back
+                        </button>
+
+                        <button type="button" class="btn primary-btn next-btn">
+                            Next →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- STEP 4 -->
+            <!-- ============================= -->
+
+            <section class="form-step">
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <span class="form-icon">💰</span>
+
+                        <div>
+                            <h2>Payment Information</h2>
+
+                            <p>
+                                Enter the payment amounts for the
+                                previous six months.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+                            <label for="PAY_AMT1">PAY_AMT1</label>
+
+                            <input type="number" step="any" id="PAY_AMT1" name="PAY_AMT1" placeholder="Enter amount"
+                                min="0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_AMT2">PAY_AMT2</label>
+
+                            <input type="number" step="any" id="PAY_AMT2" name="PAY_AMT2" placeholder="Enter amount"
+                                min="0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_AMT3">PAY_AMT3</label>
+
+                            <input type="number" step="any" id="PAY_AMT3" name="PAY_AMT3" placeholder="Enter amount"
+                                min="0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_AMT4">PAY_AMT4</label>
+
+                            <input type="number" step="any" id="PAY_AMT4" name="PAY_AMT4" placeholder="Enter amount"
+                                min="0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_AMT5">PAY_AMT5</label>
+
+                            <input type="number" step="any" id="PAY_AMT5" name="PAY_AMT5" placeholder="Enter amount"
+                                min="0" required>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="PAY_AMT6">PAY_AMT6</label>
+
+                            <input type="number" step="any" id="PAY_AMT6" name="PAY_AMT6" placeholder="Enter amount"
+                                min="0" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-navigation">
+
+                        <button type="button" class="btn secondary-btn prev-btn">
+                            ← Back
+                        </button>
+
+                        <button type="button" class="btn primary-btn next-btn">
+                            Review →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- STEP 5 -->
+            <!-- ============================= -->
+
+            <section class="form-step">
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <span class="form-icon">🔍</span>
+
+                        <div>
+                            <h2>Review Information</h2>
+
+                            <p>
+                                Review your information before running
+                                the AI prediction.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Automatically Calculated Features -->
+
+                    <div class="calculated-features">
+
+                        <h3>
+                            Automatically Calculated Features
+                        </h3>
+
+
+                        <div class="calculated-grid">
+
+                            <div class="calculated-card">
+
+                                <span>
+                                    TOTAL PAY AMOUNT
+                                </span>
+
+                                <strong id="totalPayDisplay">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="calculated-card">
+
+                                <span>
+                                    MAX PAYMENT DELAY
+                                </span>
+
+                                <strong id="maxDelayDisplay">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="calculated-card">
+
+                                <span>
+                                    TOTAL BILL AMOUNT
+                                </span>
+
+                                <strong id="totalBillDisplay">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="review-note">
+
+                        <span>🔐</span>
+
+                        <p>
+                            Your information will be analyzed by the
+                            trained Decision Tree machine learning model.
+                        </p>
+
+                    </div>
+
+
+                    <div class="form-navigation">
+
+                        <button type="button" class="btn secondary-btn prev-btn">
+                            ← Back
+                        </button>
+
+                        <button type="submit" class="btn primary-btn">
+                            Analyze Default Risk →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </form>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
